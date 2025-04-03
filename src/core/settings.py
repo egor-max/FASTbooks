@@ -38,7 +38,7 @@ class AppSettings(BaseSettings):
     """
 
 
-class Settings(BaseSettings, PostgresSqlSettings, AppSettings): 
+class Settings(AppSettings, BaseSettings, PostgresSqlSettings): 
     """
     Настройки проекта для запуска приложения.
 
