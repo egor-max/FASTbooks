@@ -18,12 +18,6 @@ class PostgresSqlSettings(BaseSettings):
     """
 
     database_url: str
-    model_config = SettingsConfigDict(      #  Изучить SettingsConfigDict
-                                            #  Установить зависимость 
-        env_file=".env", 
-        env_file_encoding="utf-8",
-        
-    )
     
 
 class AppSettings(BaseSettings):
@@ -37,6 +31,10 @@ class AppSettings(BaseSettings):
 
     """
 
+    app_title: str
+    app_description: str
+    secret: str
+
 
 class Settings(AppSettings, BaseSettings, PostgresSqlSettings): 
     """
@@ -49,3 +47,12 @@ class Settings(AppSettings, BaseSettings, PostgresSqlSettings):
     None
 
     """
+    
+    model_config = SettingsConfigDict(
+                
+        env_file=".env", 
+        env_file_encoding="utf-8",
+    )   
+
+
+settings = Settings()
